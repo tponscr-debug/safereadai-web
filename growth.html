@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeReadAI — Outreach Influenceurs</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/growth.css" />
+</head>
+<body>
+
+  <div class="growth-page">
+
+    <!-- ── HEADER ─────────────────────────────────────────── -->
+    <header class="growth-header" role="banner">
+      <a href="/" class="growth-logo" aria-label="SafeReadAI — retour à l'accueil">
+        <span class="growth-logo-mark" aria-hidden="true">SR</span>
+        <span class="growth-logo-text">Safe<span>Read</span><span style="color:var(--color-text-3)">AI</span></span>
+      </a>
+      <span class="growth-header-badge">Outil interne — Outreach influenceurs</span>
+    </header>
+
+    <!-- ── MAIN ───────────────────────────────────────────── -->
+    <main class="growth-main" role="main">
+
+      <!-- LEFT: FORM -->
+      <section class="growth-form-panel" aria-labelledby="form-title">
+        <div>
+          <h1 class="growth-form-title" id="form-title">Outreach<br>Influenceurs</h1>
+          <p class="growth-form-subtitle">Génère un email personnalisé en 30 secondes</p>
+        </div>
+
+        <!-- Nom -->
+        <div class="form-group">
+          <label class="form-label" for="firstName">Prénom de l'influenceur</label>
+          <input
+            class="form-input"
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Ex: Pierre, Thibault, Alex..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="contact@influenceur.com"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Angle -->
+        <div class="form-group">
+          <label class="form-label" id="angle-label">Angle du message</label>
+          <div class="angle-cards" role="radiogroup" aria-labelledby="angle-label">
+
+            <div
+              class="angle-card"
+              data-angle="danger"
+              role="radio"
+              aria-checked="true"
+              tabindex="0"
+              aria-label="Angle danger — crée l'inconfort"
+            >
+              <div class="angle-card-radio" aria-hidden="true"></div>
+              <div class="angle-card-text">
+                <div class="angle-card-name">Angle Danger</div>
+                <div class="angle-card-desc">Crée l'inconfort, fait réaliser le risque</div>
+              </div>
+              <span class="angle-card-badge badge-danger">⚠ DANGER</span>
+            </div>
+
+            <div
+              class="angle-card"
+              data-angle="technique"
+              role="radio"
+              aria-checked="false"
+              tabindex="0"
+              aria-label="Angle technique — pour les devs"
+            >
+              <div class="angle-card-radio" aria-hidden="true"></div>
+              <div class="angle-card-text">
+                <div class="angle-card-name">Angle Technique</div>
+                <div class="angle-card-desc">Architecture, stack, pour les devs</div>
+              </div>
+              <span class="angle-card-badge badge-tech">⚙ TECH</span>
+            </div>
+
+            <div
+              class="angle-card"
+              data-angle="exclusivite"
+              role="radio"
+              aria-checked="false"
+              tabindex="0"
+              aria-label="Angle exclusivité — accès avant-première"
+            >
+              <div class="angle-card-radio" aria-hidden="true"></div>
+              <div class="angle-card-text">
+                <div class="angle-card-name">Angle Exclusivité</div>
+                <div class="angle-card-desc">Accès avant-première, sentiment de privilège</div>
+              </div>
+              <span class="angle-card-badge badge-exclusive">★ EXCLU</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-actions">
+          <button class="btn-full btn-copy" id="btn-copy" type="button" aria-label="Copier le message dans le presse-papier">
+            <span class="btn-icon-emoji" aria-hidden="true">📋</span>
+            <span class="btn-text">Copier le message</span>
+          </button>
+          <button class="btn-full btn-secondary" id="btn-reset" type="button" aria-label="Réinitialiser le formulaire">
+            Réinitialiser
+          </button>
+        </div>
+
+        <div style="padding-top:8px; border-top:1px solid var(--color-border); font-size:0.75rem; font-family:var(--font-mono); color:var(--color-text-3); line-height:1.6;">
+          Le bouton "Copier" copie le sujet + corps du message dans ton presse-papier. Tu peux ensuite le coller dans Gmail, Outlook, ou tout autre client mail.
+        </div>
+
+      </section>
+
+      <!-- RIGHT: PREVIEW -->
+      <section class="growth-preview-panel" aria-labelledby="preview-heading">
+
+        <div class="preview-header">
+          <span class="preview-title" id="preview-heading">Prévisualisation</span>
+          <span class="preview-angle-tag badge-danger" id="preview-angle-tag">DANGER</span>
+        </div>
+
+        <div class="email-preview" role="article" aria-label="Aperçu de l'email">
+          <div class="email-chrome">
+            <div class="email-chrome-row">
+              <span class="email-field-label">De</span>
+              <span class="email-field-value">Thomas Pons &lt;thomas@safereadai.com&gt;</span>
+            </div>
+            <div class="email-chrome-row">
+              <span class="email-field-label">À</span>
+              <span class="email-field-value" id="preview-to" aria-live="polite" aria-label="Destinataire"></span>
+            </div>
+            <div class="email-chrome-row">
+              <span class="email-field-label">Sujet</span>
+              <span class="email-field-value subject" id="preview-subject" aria-live="polite" aria-label="Sujet de l'email"></span>
+            </div>
+          </div>
+          <div class="email-body-wrapper">
+            <div class="email-body" id="preview-body" aria-live="polite" aria-label="Corps de l'email"></div>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div style="
+          background: var(--color-surface);
+          border: 1px solid var(--color-border);
+          border-radius: var(--r-md);
+          padding: 16px 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        ">
+          <div style="font-size:0.75rem; font-family:var(--font-mono); color:var(--color-text-3); letter-spacing:0.06em; text-transform:uppercase;">
+            Tips outreach
+          </div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:0.8125rem; color:var(--color-text-2); display:flex; gap:8px; align-items:flex-start;">
+              <span style="color:var(--color-brand); flex-shrink:0">→</span>
+              L'angle <strong style="color:var(--color-text-1)">Danger</strong> performe mieux sur les créateurs généralistes qui couvrent la tech
+            </li>
+            <li style="font-size:0.8125rem; color:var(--color-text-2); display:flex; gap:8px; align-items:flex-start;">
+              <span style="color:var(--color-brand); flex-shrink:0">→</span>
+              L'angle <strong style="color:var(--color-text-1)">Technique</strong> pour les dev influencers (> 10k GitHub followers)
+            </li>
+            <li style="font-size:0.8125rem; color:var(--color-text-2); display:flex; gap:8px; align-items:flex-start;">
+              <span style="color:var(--color-brand); flex-shrink:0">→</span>
+              L'angle <strong style="color:var(--color-text-1)">Exclusivité</strong> pour les YouTubers tech avec une large audience non-dev
+            </li>
+            <li style="font-size:0.8125rem; color:var(--color-text-2); display:flex; gap:8px; align-items:flex-start;">
+              <span style="color:var(--color-brand); flex-shrink:0">→</span>
+              Personnalise en ajoutant une phrase spécifique à leur dernier contenu
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer class="growth-footer" role="contentinfo">
+      <div class="growth-footer-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Templates chargés — prêt à l'envoi</span>
+      </div>
+      <span>SafeReadAI · Outil interne</span>
+    </footer>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <span class="toast-icon" aria-hidden="true">✅</span>
+    <span id="toast-message">Message copié dans le presse-papier</span>
+  </div>
+
+  <script src="js/growth.js"></script>
+</body>
+</html>
